@@ -13,8 +13,8 @@ const seedAdmin = async () => {
     if (!adminExists) {
       const admin = await User.create({
         name: 'System Admin',
-        email: 'admin@servicebooking.com',
-        password: 'admin123',
+        email: '',
+        password: '',
         role: 'admin',
         phone: '+1234567890'
       });

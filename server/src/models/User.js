@@ -8,11 +8,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  email: {
+   email: {
     type: String,
-    required: true,
-    unique: true,
-    lowercase: true
+    required: [true, 'Email is required'],
+    unique: true, // This automatically creates an index
+    lowercase: true,
+    trim: true,
+    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
   },
   password: {
     type: String,
@@ -30,7 +32,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // 🚀 INDEXING: Critical for performance
-userSchema.index({ email: 1 });        // Fast login lookups
 userSchema.index({ role: 1 });         // Fast role-based queries
 
 // 🔐 PASSWORD OPERATION: Hash before saving
@@ -48,4 +49,4 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema);

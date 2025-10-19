@@ -39,4 +39,4 @@ bookingSchema.index({ status: 1 });            // Fast status filtering
 bookingSchema.index({ preferredDate: 1 });     // Fast date-based sorting
 bookingSchema.index({ user: 1, createdAt: -1 }); // User's bookings with latest first
 
-module.exports = mongoose.model('Booking', bookingSchema);
+export default mongoose.model('Booking', bookingSchema);
