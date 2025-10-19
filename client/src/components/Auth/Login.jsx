@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, Link } from "react-router-dom"
-import { loginUser, clearError } from "../../store/slices/authSlice"
+import { loginUser} from "../../store/slices/authSlice"
 import { showSuccess, showError } from "../../utils/toast"
 
 const Login = () => {
@@ -22,8 +22,6 @@ const Login = () => {
     try {
       const result = await dispatch(loginUser(formData)).unwrap()
       if (result && result.user) {
-        // Navigate immediately after successful login
-        showSuccess(`Welcome back, ${result.user.name}!`)
         navigate("/", { replace: true })
       }
     } catch (error) {

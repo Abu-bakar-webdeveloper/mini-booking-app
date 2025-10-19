@@ -12,6 +12,11 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     enum: ['Car', 'SUV', 'Truck', 'Motorcycle', 'Other']
   },
+  serviceType: {
+    type: String,
+    required: [true, 'Service type is required'],
+    enum: ['Maintenance', 'Repair', 'Inspection', 'Other']
+  },
   issueDescription: {
     type: String,
     required: true

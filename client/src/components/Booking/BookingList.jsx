@@ -12,6 +12,8 @@ const BookingList = () => {
     dispatch(getBookings())
   }, [dispatch])
 
+  console.log(bookings, "bookings")
+
   const getStatusClass = (status) => {
     switch (status) {
       case 'Pending': return 'bg-yellow-100 text-yellow-800'

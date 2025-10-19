@@ -45,8 +45,10 @@ const AdminPanel = () => {
   const managers = users.filter(user => user.role === 'manager')
   const regularUsers = users.filter(user => user.role === 'user')
 
+  console.log(managers, "managers");
+
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 text-black">
       <h1 className="text-3xl font-bold text-gray-900 mb-6">Admin Panel</h1>
 
       {/* Manager Management */}
@@ -139,7 +141,7 @@ const AdminPanel = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {managers.map((manager) => (
-                  <tr key={manager.id}>
+                  <tr key={manager._id}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {manager.name}
                     </td>
@@ -152,9 +154,9 @@ const AdminPanel = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      {manager.id !== currentUser.id && (
+                      {manager._id !== currentUser.id && (
                         <button
-                          onClick={() => handleDeleteManager(manager.id)}
+                          onClick={() => handleDeleteManager(manager._id)}
                           className="text-red-600 hover:text-red-900"
                         >
                           Delete
